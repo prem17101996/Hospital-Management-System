@@ -1,0 +1,21 @@
+{% extends 'navigation.html' %}
+{% load static %}
+
+{% block content %}
+<body >
+
+<div class="bg"></div>
+<div class ="container">
+    <h2 class="text-center"><font  color="lightblue" >Admin Login</font></h2>
+    <form method="post" >
+        {% csrf_token %}
+        <label>Admin Name</label>
+        <input type="text" class ="form-control" name="uname">
+        <label>Password</label>
+        <input type="password" class ="form-control" name="pwd"><br>
+        <input type="submit" value="Login" class ="form-control btn btn-primary">
+    </form>
+</div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'navigation.html' %}
+
+{% block content %}
+<html><head><style>
+    #v{
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+   #tcss {
+    width: 1000px;
+  border: 5px solid lightgreen;
+  padding: 50px;
+  margin-top: 25px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+}
+      
+      </style>
+</head>
+
+<body>
+<div class ="container" id= "v">
+    <h2 class="text-center" ><font color="lightgreen">VIEW-Appointment</font></h2></div><br></br>
+    <table class="table table-hover" id="tcss">
+        <thead>
+            <tr>
+                <th >Id</th>
+                <th>Doctor</th>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in apt %}
+            <tr>
+                <td>{{i.id}}</td>
+                
+                <td>{{i.doctor}}</td>
+                <td>{{i.patient}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.time}}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'navigation.html' %}
+{% block content %}
+<div class ="container">
+    <h2 class="text-center">ADD-Doctor</h2>
+    <form method="post" >
+        {% csrf_token %}
+        <label>Doctor name</label>
+        <input type="text" class ="form-control" name="name"><br>
+        <label>Contact</label>
+        <input type="text" class ="form-control" name="contact"><br>
+        <label>Specialization</label>
+        <input type="text" class ="form-control" name="special"><br>
+        <input type="submit" value="Submit" class ="form-control btn btn-primary">
+    </form>
+</div>
+{% endblock %}

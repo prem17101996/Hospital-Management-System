@@ -1,0 +1,20 @@
+{% extends 'navigation.html' %}
+{% block content %}
+<div class ="container">
+    <h2 class="text-center">ADD-Appointment</h2>
+    <form method="post" >
+        {% csrf_token %}
+        <label>Id</label>
+        <input type="text" class ="form-control" name="id"><br>
+        <label>Doctor name</label>
+        <input type="text" class ="form-control" name="doctor"><br>
+        <label>Patient name</label>
+        <input type="text" class ="form-control" name="patient"><br>
+        <label>Date</label>
+        <input type="text" class ="form-control" name="date"><br>
+        <label>Time</label>
+        <input type="text" class ="form-control" name="time"><br>
+        <input type="submit" value="Submit" class ="form-control btn btn-primary">
+    </form>
+</div>
+{% endblock %}

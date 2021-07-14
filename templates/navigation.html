@@ -1,0 +1,118 @@
+{% load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+  <!--Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+ <!-- Bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+      
+      .bg {
+       
+        background-image: url("{% static 'hsptl.jpg' %}");
+        height: 100%; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .bgindex {
+       
+       background-image: url("{% static 'hm4.png' %}");
+       height: 100%; 
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+     }
+</style>
+  </head>
+  <body>
+    {% csrf_token %}
+  <!-- <body background="{% static 'hsptl.jpg' %}" width=100% hieght=100%> -->
+    
+    <nav class="navbar navbar-expand-lg navbar-darkblue bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" ><b>Hospital Management System</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                {% if not request.user.is_staff %}
+      
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'logout' %}"><font size="4" color="lightblue" > Home</font></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}"><font size="4" color="lightblue" > About</font></a>
+                  <li class="nav-item text-center ml-auto">
+                    <a class="nav-link" href="{% url 'contact' %}"><font size="4" color="lightblue" > Contact</font></a>
+                </li>
+                
+                {% endif %}
+                {% if request.user.is_staff %}
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <font size="4" color="lightblue" >Doctor</font></a>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'add_doctor' %}"> <font size="2" color="blue" >Add Doctor</font></a></li>
+                    <li><a class="dropdown-item" href="{% url 'view_doctor' %}"> <font size="2" color="blue" >View Doctor</font></a></li>
+                    
+                  </ul>
+                </li></nav>
+                
+                  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <font size="4" color="lightblue" >Patient</font></a>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'add_patient' %}"> <font size="2" color="blue" >Add Patient</font></a></li>
+                        <li><a class="dropdown-item" href="{% url 'view_patient' %}"> <font size="2" color="blue" >View Patient</font></a></li>
+                        
+                      </ul>
+                    </li>
+                    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <font size="4" color="lightblue" >Appointment</font></a>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="{% url 'add_appointment' %}"> <font size="2" color="blue" >Add Appointment</font></a></li>
+                          <li><a class="dropdown-item" href="{% url 'view_appointment' %}"> <font size="2" color="blue" >View Appointment</font></a></li>
+                          
+                        </ul>
+                      </li></nav>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'logout' %}"><font size="4" color="green" ><b>Logout</b></font></a>
+            
+                
+            
+                </li>
+                {% endif %}
+    
+                    
+                  </ul>
+                </nav>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+{% block content %} {% endblock %}
+
+  </body> 
+</html>
